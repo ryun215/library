@@ -20,7 +20,6 @@ public class LibraryController {
 	@Autowired
 	private LibraryService libraryService;
 	
-	
 	//로그인폼에서 아이디, pw를 입력받아 로그인 요청
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(LibraryDto library){
@@ -28,32 +27,35 @@ public class LibraryController {
 		return "/main";
 	}
 	
-	
 	//로그인폼으로 가는 요청
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(){
 		return "/login";
 	}
 	
-	
-	
 	//library add폼으로 가는 요청
-	@RequestMapping(value="/add" , method=RequestMethod.GET)
+	@RequestMapping(value="/library/libraryadd" , method=RequestMethod.GET)
 	public String add(Model model){
 		logger.debug("add요청 get방식");
 		List<LocalDto> local = libraryService.localNameSelect();
 		logger.debug("local 확인 :"+local.toString());
 		model.addAttribute("local", local);
-	
-		return "/libraryAddForm";
+		return "/library/libraryAddForm";
 	}
+	
 	//library add폼에서 입력받아 도서관 관리자 가입처리
-	@RequestMapping(value="/add", method=RequestMethod.POST)
+	@RequestMapping(value="/library/libraryadd", method=RequestMethod.POST)
 	public String add(LibraryDto library){
 		logger.debug("컨트롤러에서 library값 받았는지 확인 :"+library.toString());
 		libraryService.libraryInsert(library);
-		return "redirect:/add";
+		return "redirect:/main";
 	}
+	//메인화면으로 감
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public String main(){
+		return "/main";
+	}
+	//도서등록 화면으로 감
 	
 	
 }
