@@ -25,6 +25,16 @@
 		#{bookAuthor},
 		#{bookPublisher}
 		)
-		
 	</insert>
+	<select id="bookSelect" parameterType="com.ksmart.library.dto.BookDto"
+	 resultType="com.ksmart.library.dto.BookDto">
+	 select 
+	 	book_code as bookCode,
+	 	book_name as bookName,
+	 	book_author as bookAuthor,
+	 	book_publisher as bookPublisher,
+	 	genre_code as genreCode 
+	 from book 
+	 where book_code=#{bookCode} 
+	</select>
 </mapper>

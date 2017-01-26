@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ksmart.library.book.service.BookService;
-import com.ksmart.library.controller.LibraryController;
 import com.ksmart.library.dto.BookDto;
 import com.ksmart.library.dto.GenreDto;
 
@@ -37,5 +36,17 @@ public class BookController {
 		bookService.bookInsert(book);
 		
 		return "/library/book/bookInsertForm";
+	}
+	
+	//도서폐기화면으로 감
+	@RequestMapping(value="/book/disposal", method=RequestMethod.GET)
+	public String disposal(){
+		return "/library/book/disposal";
+	}
+	
+	@RequestMapping(value="/book/disposal", method=RequestMethod.POST)
+	public String disposal(BookDto book){
+		bookService.bookSelectAndDisposal(book);
+		return "";
 	}
 }

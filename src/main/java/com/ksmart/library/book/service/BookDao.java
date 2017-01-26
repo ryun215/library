@@ -24,4 +24,9 @@ public class BookDao {
 	public int bookInsert(BookDto book){
 		return sqlSessionTemplate.insert(BookNameSpace+"bookInsert", book);
 	}
+	//도서한권의 정보 조회
+	public List<BookDto> bookSelect(BookDto book){
+		return sqlSessionTemplate.selectList(BookNameSpace+"bookSelect", book);
+		
+	}
 }
