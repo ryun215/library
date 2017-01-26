@@ -21,6 +21,23 @@ public class LibraryController {
 	private LibraryService libraryService;
 	
 	
+	//로그인폼에서 아이디, pw를 입력받아 로그인 요청
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(LibraryDto library){
+		libraryService.login(library);
+		return "/main";
+	}
+	
+	
+	//로그인폼으로 가는 요청
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login(){
+		return "/login";
+	}
+	
+	
+	
+	//library add폼으로 가는 요청
 	@RequestMapping(value="/add" , method=RequestMethod.GET)
 	public String add(Model model){
 		logger.debug("add요청 get방식");
@@ -30,11 +47,13 @@ public class LibraryController {
 	
 		return "/libraryAddForm";
 	}
-	
+	//library add폼에서 입력받아 도서관 관리자 가입처리
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String add(LibraryDto library){
 		logger.debug("컨트롤러에서 library값 받았는지 확인 :"+library.toString());
-		return "";
-		
+		libraryService.libraryInsert(library);
+		return "redirect:/add";
 	}
+	
+	
 }

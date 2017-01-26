@@ -33,4 +33,10 @@ public class LibraryDaoImpl implements LibraryDao {
 		return sqlSessionTemplate.insert(LibraryNameSpace+"libraryInsert", library);
 	}
 
+	@Override
+	public LibraryDto login(LibraryDto library) {
+		logger.debug("로그인요청시 Dao에서 library 잘 넘겨 받았는지 확인 :"+library.toString());
+		return sqlSessionTemplate.selectOne(LibraryNameSpace+"login", library);
+	}
+
 }

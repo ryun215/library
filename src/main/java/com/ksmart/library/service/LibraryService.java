@@ -9,4 +9,5 @@ public interface LibraryService {
 
 	List<LocalDto> localNameSelect();
 	int libraryInsert(LibraryDto library);
+	LibraryDto login(LibraryDto library);
 }

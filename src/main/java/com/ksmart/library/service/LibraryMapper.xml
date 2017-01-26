@@ -3,12 +3,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kmart.librarl.service.Mapper">
+	
+	<!-- 로그인요청 -->
+	<select id="login" parameterType="com.ksmart.library.dto.LibraryDto" resultType="com.ksmart.library.dto.LibraryDto">
+		select
+			library_id as libraryId, 
+			library_pw as libraryPw
+		from library
+		where 
+			library_id=#{libraryId} AND library_pw=#{libraryPw}
+	</select>
+	
+	
+	
+	<!-- 도서관 가입할 때 지역명 가져옴  -->
 	<select id="localName" resultType="com.ksmart.library.dto.LocalDto">
 		select 
 			local_code as localCode, 
 			local_name as localName 
 		from local
 	</select>
+	<!-- 도서관 관리자 가입 -->
 	<insert id="libraryInsert" parameterType="com.ksmart.library.dto.LibraryDto">
 		insert into library(
 			library_id, 
