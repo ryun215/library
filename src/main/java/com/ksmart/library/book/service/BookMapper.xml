@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ksmart.library.book.service.Mapper">
+	<select id="selectGenre" resultType="com.ksmart.library.dto.GenreDto">
+		select 
+			genre_code as genreCode,
+			genre_name as genreName 
+		 From genre
+	</select>
+	
+	<insert id="bookInsert" parameterType="com.ksmart.library.dto.BookDto">
+		insert into book(
+			library_id,
+			genre_code,
+			book_name,
+			book_author,
+			book_publisher
+			) 
+		values(
+		#{libraryId},
+		#{genreCode},
+		#{bookName},
+		#{bookAuthor},
+		#{bookPublisher}
+		)
+		
+	</insert>
+</mapper>

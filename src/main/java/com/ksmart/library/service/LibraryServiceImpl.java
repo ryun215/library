@@ -35,6 +35,8 @@ public class LibraryServiceImpl implements LibraryService{
 		LibraryDto libraryMember = libraryDao.login(library);
 		logger.debug("로그인할때 입력받은 값이 있는지 확인해줌 :"+libraryMember.toString());
 		//유효성검사 할까??
+		
+		
 		return libraryMember;
 	}
 

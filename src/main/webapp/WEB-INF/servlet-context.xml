@@ -37,8 +37,10 @@
         <!-- mybatis 세션생성후 쿼리를 실행시킬때 사용할 쿼리위치(메퍼)설정 -->
         <property name="mapperLocations">
             <list>
-               <value>classpath:com/ksmart/library/service/LibraryMapper.xml</value> 
+                <value>classpath:com/ksmart/library/service/LibraryMapper.xml</value>
+                 <value>classpath:com/ksmart/library/book/service/BookMapper.xml</value>
             </list>
+            
         </property>
     </bean>
     

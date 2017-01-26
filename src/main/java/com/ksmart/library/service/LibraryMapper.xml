@@ -2,7 +2,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kmart.librarl.service.Mapper">
+<mapper namespace="com.kmart.library.service.Mapper">
 	
 	<!-- 로그인요청 -->
 	<select id="login" parameterType="com.ksmart.library.dto.LibraryDto" resultType="com.ksmart.library.dto.LibraryDto">
@@ -13,9 +13,6 @@
 		where 
 			library_id=#{libraryId} AND library_pw=#{libraryPw}
 	</select>
-	
-	
-	
 	<!-- 도서관 가입할 때 지역명 가져옴  -->
 	<select id="localName" resultType="com.ksmart.library.dto.LocalDto">
 		select 

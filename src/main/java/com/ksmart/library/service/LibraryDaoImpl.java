@@ -18,7 +18,7 @@ public class LibraryDaoImpl implements LibraryDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	private final String LibraryNameSpace = "com.kmart.librarl.service.Mapper.";
+	private final String LibraryNameSpace = "com.kmart.library.service.Mapper.";
 	
 	@Override
 	public List<LocalDto> localNameSelect() {
