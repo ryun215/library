@@ -9,7 +9,18 @@
 			local_name as localName 
 		from local
 	</select>
-
+	<insert id="libraryInsert" parameterType="com.ksmart.library.dto.LibraryDto">
+		insert into library(
+			library_id, 
+			local_code, 
+			library_pw
+			) 
+		values(
+			#{libraryId},
+			#{localCode},
+			#{libraryPw}
+			) 
+	</insert>
 
 
 </mapper>

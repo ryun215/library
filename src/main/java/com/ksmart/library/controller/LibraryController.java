@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ksmart.library.dto.LibraryDto;
 import com.ksmart.library.dto.LocalDto;
 import com.ksmart.library.service.LibraryService;
 
@@ -30,9 +31,10 @@ public class LibraryController {
 		return "/libraryAddForm";
 	}
 	
-	public String add(){
-		
-		return null;
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String add(LibraryDto library){
+		logger.debug("컨트롤러에서 library값 받았는지 확인 :"+library.toString());
+		return "";
 		
 	}
 }

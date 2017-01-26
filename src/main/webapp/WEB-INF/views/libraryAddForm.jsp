@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -53,28 +53,30 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="#">4Á¶ µµ¼­°ü</a>
+	      <a class="navbar-brand" href="#">4ì¡° ë„ì„œê´€</a>
 	    </div>
 	  </div>
 	</nav>
 	  
 	<div class="container-fluid text-center">    
  
-      <h1>µµ¼­°ü °¡ÀÔ</h1>
+      <h1>ë„ì„œê´€ ê°€ìž…</h1>
+      
+      	<form action="/add" method="post">
       	<table align="center">
       		<tr>
-      			<td>°ü¸®ÀÚID</td>
-      			<td><input type="text"/></td>
+      			<td>ê´€ë¦¬ìžID</td>
+      			<td><input type="text" name="libraryId"/></td>
       		</tr>
       		<tr>
       			<td>PW</td>
-      			<td><input type="password"/></td>
+      			<td><input type="password" name="libraryPw"/></td>
       		</tr>
       		<tr>
-      			<td>Áö¿ª</td>
+      			<td>ì§€ì—­</td>
       			<td>
-      				<select>
-      					<option>::¼±ÅÃ::</option>
+      				<select name="localCode">
+      					<option>::ì„ íƒ::</option>
       					<c:forEach var="local" items="${local}">
       						<option value="${local.localCode}">${local.localName}</option>
       					</c:forEach>
@@ -84,11 +86,12 @@
       		<tr>
       			<td></td>
       			<td>
-      			<input type="button" value="¿Ï·á"/>
-      			<input type="button" value="ÃÊ±âÈ­"/>
+      			<input type="submit" value="ì™„ë£Œ"/>
+      			<input type="reset" value="ì´ˆê¸°í™”"/>
       			</td>
       		</tr>
       	</table>
+      	</form>
 	</div>
 
 
