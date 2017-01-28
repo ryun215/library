@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ksmart.library.dto.LibraryDto;
 import com.ksmart.library.dto.LocalDto;
@@ -37,6 +35,7 @@ public class LibraryController {
 		public String login(LibraryDto library, HttpSession session){
 			libraryService.login(library);
 			session.setAttribute("libraryId", libraryService.login(library).getLibraryId());
+			System.out.println("세션확인 :"+session.getAttribute("libraryId"));
 			return "/main";
 		}
 		

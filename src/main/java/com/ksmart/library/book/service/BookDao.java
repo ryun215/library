@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ksmart.library.dto.BookDto;
+import com.ksmart.library.dto.DisposalDto;
 import com.ksmart.library.dto.GenreDto;
 
 @Repository
@@ -25,8 +26,12 @@ public class BookDao {
 		return sqlSessionTemplate.insert(BookNameSpace+"bookInsert", book);
 	}
 	//도서한권의 정보 조회
-	public List<BookDto> bookSelect(BookDto book){
-		return sqlSessionTemplate.selectList(BookNameSpace+"bookSelect", book);
-		
+	public BookDto bookSelect(DisposalDto bookCode){
+		System.out.println("폐기도서코드 확인 Dao :"+bookCode.getBookCode());
+		return sqlSessionTemplate.selectOne(BookNameSpace+"bookSelect", bookCode);
+	}
+	//폐기도서정보 등록
+	public int disposalInsert(BookDto book){
+		return sqlSessionTemplate.insert(BookNameSpace+"disposalInsert", book);
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ksmart.library.book.controller.BookController;
 import com.ksmart.library.dto.BookDto;
+import com.ksmart.library.dto.DisposalDto;
 import com.ksmart.library.dto.GenreDto;
 
 @Service
@@ -26,11 +27,11 @@ public class BookService {
 		return bookDao.bookInsert(book);
 	}
 	//도서 폐기를 위해 도서코드로 도서정보 select하여 disposal에 값 옮겨 insert
-	public int bookSelectAndDisposal(BookDto book){
-		List<BookDto> bookInfo = bookDao.bookSelect(book);
+	public int bookSelectAndDisposal(DisposalDto bookCode){
+		System.out.println("폐기도서코드 확인 Service :"+bookCode.getBookCode());
+		BookDto bookInfo = bookDao.bookSelect(bookCode);
 		logger.debug("bookInfo :"+bookInfo);
-		
-		return 0;
+		return bookDao.disposalInsert(bookInfo);
 	}
 		
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ksmart.library.book.service.BookService;
 import com.ksmart.library.dto.BookDto;
+import com.ksmart.library.dto.DisposalDto;
 import com.ksmart.library.dto.GenreDto;
 
 @Controller
@@ -45,8 +46,9 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/book/disposal", method=RequestMethod.POST)
-	public String disposal(BookDto book){
-		bookService.bookSelectAndDisposal(book);
-		return "";
+	public String disposal(DisposalDto bookCode){
+		System.out.println("폐기도서코드 확인 :"+bookCode);
+		bookService.bookSelectAndDisposal(bookCode);
+		return "redirect:/book/disposal";
 	}
 }

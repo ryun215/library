@@ -3,6 +3,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ksmart.library.book.service.Mapper">
+	
+	<!-- 도서입력시 장르 가져옴 -->
 	<select id="selectGenre" resultType="com.ksmart.library.dto.GenreDto">
 		select 
 			genre_code as genreCode,
@@ -10,6 +12,7 @@
 		 From genre
 	</select>
 	
+	<!-- 도서 입력 -->
 	<insert id="bookInsert" parameterType="com.ksmart.library.dto.BookDto">
 		insert into book(
 			library_id,
@@ -26,7 +29,9 @@
 		#{bookPublisher}
 		)
 	</insert>
-	<select id="bookSelect" parameterType="com.ksmart.library.dto.BookDto"
+	
+	<!-- 폐기를 위해 도서정보 조회 -->
+	<select id="bookSelect" parameterType="com.ksmart.library.dto.DisposalDto"
 	 resultType="com.ksmart.library.dto.BookDto">
 	 select 
 	 	book_code as bookCode,
@@ -37,4 +42,26 @@
 	 from book 
 	 where book_code=#{bookCode} 
 	</select>
+	<!-- 폐기정보 입력 -->
+	<insert id="disposalInsert" parameterType="com.ksmart.library.dto.BookDto">
+		insert into disposal(
+			genre_code,
+			book_code,
+			disposal_bookname,
+			disposal_author,
+			disposal_publisher,
+			disposal_registerday
+		)
+		values(
+			#{genreCode},
+			#{bookCode},
+			#{bookName},
+			#{bookAuthor},
+			#{bookPublisher},
+			now()
+		)
+		
+			
+	
+	</insert>
 </mapper>

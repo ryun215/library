@@ -53,13 +53,13 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="#">4조 도서관</a>
+	      <a class="navbar-brand" href="/main">4조 도서관</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	        <li><a href="#">도서관리</a></li>
-	        <li><a href="#">회원관리</a></li>
-	        <li><a href="#">대여관리</a></li>
+	    	 <li><a href="/book/bookInsert">도서관리</a></li>
+	        <li><a href="/book/bookMember">회원관리</a></li>
+	        <li><a href="/book/rental">대여관리</a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -71,11 +71,11 @@
 	    </div>
 	    <div class="col-sm-8 text-center"> 
 	      <h1>도서폐기등록</h1>
-	      	<form action="" method="post">
+	      	<form action="/book/disposal" method="post">
 		      	<table align="center">
 		      		<tr>
 		      			<td>도서코드</td>
-		      			<td><input type="text"/></td>
+		      			<td><input type="text" name="bookCode"/></td>
 		      		</tr>
 		      		<tr>
 		      			<td></td>

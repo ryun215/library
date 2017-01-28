@@ -1,6 +1,6 @@
 package com.ksmart.library.dto;
 
-public class DistposalDto {
+public class DisposalDto {
 	private int disposalCode;
 	private int genreCode;
 	private int bookCode;
@@ -8,7 +8,7 @@ public class DistposalDto {
 	private String disposalAuthor;
 	private String disposalPublisher;
 	private String disposalRegisterDay;
-	public DistposalDto() {
+	public DisposalDto() {
 		super();
 	}
 	public int getDisposalCode() {

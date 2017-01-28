@@ -42,6 +42,8 @@
       .row.content {height:auto;} 
     }
   </style>
+
+
 </head>
 <body>
 	
@@ -61,7 +63,7 @@
 	<div class="container-fluid text-center">    
  
       <h1>도서관 관리 시스템</h1>
-      	<form action="/login" method="post">
+      	<form id="login" action="/login" method="post">
       	<table align="center">
       		<tr>
       			<td>ID</td>
@@ -74,8 +76,8 @@
       		<tr>
       			<td></td>
       			<td>
-      			<input type="submit" value="완료"/>
-      			<input type="button" name="libraryInsert" value="도서관가입"/>
+      			<input type="submit" id="submit" value="완료"/>
+      			<input type="button" id="libraryInsert" onclick="" value="도서관가입"/>
       			</td>
       		</tr>
       		</table>
