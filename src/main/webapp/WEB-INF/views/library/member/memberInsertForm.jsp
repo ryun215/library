@@ -53,11 +53,11 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="/main">4조 도서관</a>
+	      <a class="navbar-brand" href="#">4조 도서관</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	    	 <li><a href="/book/bookInsert">도서관리</a></li>
+	       	<li><a href="/book/bookInsert">도서관리</a></li>
 	        <li><a href="/member/memberInsert">회원관리</a></li>
 	        <li><a href="/rental/rentalInsert">대여관리</a></li>
 	      </ul>
@@ -67,16 +67,45 @@
 	<div class="container-fluid text-center">    
 	  <div class="row content">
 	    <div class="col-sm-2 sidenav">
-	     
+	      <p><a href="/member/memberInsert">회원가입</a></p>
 	     
 	    </div>
 	    <div class="col-sm-8 text-center"> 
-	      <h1>
-	      <% 
-	      		System.out.println("세션정보 확인 : "+session.getAttribute("libraryId"));
-	      %>
-	      </h1>
-	     
+	      <h1>회원등록</h1>
+	    <form action="/member/memberInsert" method="post">
+	      <table align="center">
+		      		<tr>
+		      			<td>ID</td>
+		      			<td><input type="text" name="memberId"/></td>
+		      		</tr>
+		      		<tr>
+		      			<td>이름</td>
+		      			<td><input type="text" name="memberName"/></td>
+		      		</tr>
+		      		<tr>
+		      			<td>연락처</td>
+		      			<td><input type="text" name="memberPhone"/></td>
+		      		</tr>
+		      		<tr>
+		      			<td>등급</td>
+		      			<td>
+		      				<select name="memberlevelCode">
+		      					<option>선택</option>
+		      					<c:forEach var="memberLevel" items="${memberlevel}">
+		      					<option value="${memberLevel.memberlevelCode}">${memberLevel.memberlevelName}</option>
+		      					</c:forEach> 
+		      				</select>
+		      		</tr>
+		      		<tr>
+		      			<td>
+		      			</td>
+		      			<td>
+		      				<input type="submit" value="완료"/>
+		      				<input type="reset" value="초기화"/>
+		      			</td>
+	      			</tr>
+	      		</table>
+	      	</form>
 	    </div>
 	  </div>
 	</div>

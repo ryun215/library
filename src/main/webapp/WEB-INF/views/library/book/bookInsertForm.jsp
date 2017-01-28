@@ -55,9 +55,9 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	       <li><a href="/book/bookInsert">도서관리</a></li>
-	        <li><a href="/book/bookMember">회원관리</a></li>
-	        <li><a href="/book/rental">대여관리</a></li>
+	     	<li><a href="/book/bookInsert">도서관리</a></li>
+	        <li><a href="/member/memberInsert">회원관리</a></li>
+	        <li><a href="/rental/rentalInsert">대여관리</a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -66,7 +66,7 @@
 	  <div class="row content">
 	    <div class="col-sm-2 sidenav">
 	      <p><a href="/book/bookInsert">도서등록</a></p>
-	      <p><a href="#">도서폐기등록</a></p>
+	      <p><a href="/book/disposal">도서폐기등록</a></p>
 	    </div>
 	    <div class="col-sm-8 text-center"> 
 	      <h1>도서등록</h1>

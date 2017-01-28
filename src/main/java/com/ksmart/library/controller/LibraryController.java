@@ -60,7 +60,7 @@ public class LibraryController {
 	public String add(LibraryDto library){
 		logger.debug("컨트롤러에서 library값 받았는지 확인 :"+library.toString());
 		libraryService.libraryInsert(library);
-		return "redirect:/main";
+		return "redirect:/login";
 	}
 
 

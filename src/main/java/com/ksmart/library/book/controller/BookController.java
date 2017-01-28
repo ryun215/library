@@ -36,7 +36,7 @@ public class BookController {
 		logger.debug(book.toString());
 		bookService.bookInsert(book);
 		
-		return "/library/book/bookInsertForm";
+		return "redirect:/library/book/bookInsertForm";
 	}
 	
 	//도서폐기화면으로 감
@@ -44,7 +44,7 @@ public class BookController {
 	public String disposal(){
 		return "/library/book/disposal";
 	}
-	
+	//도서폐기등록
 	@RequestMapping(value="/book/disposal", method=RequestMethod.POST)
 	public String disposal(DisposalDto bookCode){
 		System.out.println("폐기도서코드 확인 :"+bookCode);

@@ -39,6 +39,7 @@
             <list>
                 <value>classpath:com/ksmart/library/service/LibraryMapper.xml</value>
                  <value>classpath:com/ksmart/library/book/service/BookMapper.xml</value>
+                 <value>classpath:com/ksmart/library/member/service/MemberMapper.xml</value>
             </list>
             
         </property>

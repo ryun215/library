@@ -77,7 +77,7 @@
       			<td></td>
       			<td>
       			<input type="submit" id="submit" value="완료"/>
-      			<input type="button" id="libraryInsert" onclick="" value="도서관가입"/>
+      			<span  style=""><a href="/library/libraryadd">도서관가입</a></span>
       			</td>
       		</tr>
       		</table>

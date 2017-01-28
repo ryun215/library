@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksmart.library.member.service.MemberMapper">
+
+	<!-- 멤버등급조회 -->
+	<select id="selectMemberLevel" resultType="com.ksmart.library.dto.MemberLevelDto">
+		select 
+			memberlevel_code as memberlevelCode,
+			memberlevel_name as memberlevelName,
+			payment as payment 
+		from memberlevel
+	</select>
+
+	<!-- 멤버가입 -->
+	<insert id="memberInsert" parameterType="com.ksmart.library.dto.MemberDto">
+		insert into member(
+			member_id, 
+			memberlevel_code, 
+			member_name, 
+			member_phone
+			) 
+		values(
+			#{memberId},
+			#{memberlevelCode},
+			#{memberName},
+			#{memberPhone}
+		)
+
+	</insert>
+</mapper>
