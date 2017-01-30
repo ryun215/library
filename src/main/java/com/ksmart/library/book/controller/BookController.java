@@ -36,7 +36,7 @@ public class BookController {
 		logger.debug(book.toString());
 		bookService.bookInsert(book);
 		
-		return "redirect:/library/book/bookInsertForm";
+		return "redirect:/book/bookInsert";
 	}
 	
 	//도서폐기화면으로 감

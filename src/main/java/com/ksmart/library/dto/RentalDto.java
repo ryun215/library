@@ -4,6 +4,7 @@ public class RentalDto {
 	private String rentalCode;
 	private int bookCode;
 	private String memberId;
+	private int rentalStateCode;
 	private String rentalStart;
 	private String rentalEnd;
 	private int rentalPayment;
@@ -53,14 +54,21 @@ public class RentalDto {
 	public void setRentalPrePayment(int rentalPrePayment) {
 		this.rentalPrePayment = rentalPrePayment;
 	}
-	
-
+	public int getRentalStateCode() {
+		return rentalStateCode;
+	}
+	public void setRentalStateCode(int rentalStateCode) {
+		this.rentalStateCode = rentalStateCode;
+	}
 	@Override
 	public String toString() {
 		return "RentalDto [rentalCode=" + rentalCode + ", bookCode=" + bookCode + ", memberId=" + memberId
-				+ ", rentalStart=" + rentalStart + ", rentalEnd=" + rentalEnd + ", rentalPayment=" + rentalPayment
-				+ ", rentalPrePayment=" + rentalPrePayment + "]";
+				+ ", rentalStateCode=" + rentalStateCode + ", rentalStart=" + rentalStart + ", rentalEnd=" + rentalEnd
+				+ ", rentalPayment=" + rentalPayment + ", rentalPrePayment=" + rentalPrePayment + "]";
 	}
+	
+
+	
 	
 	
 }

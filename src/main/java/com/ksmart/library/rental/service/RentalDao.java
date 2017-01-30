@@ -23,7 +23,6 @@ public class RentalDao {
 		System.out.println("상태코드 확인 :"+ x);
 		return x;
 	}
-	
 	//도서 상태코드 업데이트
 	public int bookStateUpdate(RentalDto rental){
 		logger.debug("도서상태업데이트Dao");
@@ -34,9 +33,12 @@ public class RentalDao {
 	public int rentalInsert(RentalDto rental){
 		return  sqlSessionTemplate.insert(rentalNameSpace+"rentalInsert", rental);
 	}
-	
 	//아이디확인
 	public String idCheck(RentalDto rental){
 		return sqlSessionTemplate.selectOne(rentalNameSpace+"idCheck", rental);
+	}
+	//도서코드를 가지고 렌탈정보 조회
+	public RentalDto rentalInfoSelect(RentalDto rental){
+		return sqlSessionTemplate.selectOne(rentalNameSpace+"rentalInfoSelect", rental);
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,40 @@
       .row.content {height:auto;} 
     }
   </style>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		function getContextPath() {
+			var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+			return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+		};
+	
+	$('btn').click(function(){
+		 $.ajax({
+		        url : getContextPath()+"/getRental",
+		        type: "get",
+		        data : { "bookCode" : $("#bookCode").val() },
+		        success : function(data){
+					//@ResponseBody 를 이용해서 이미 json객체로 넘어오기때문에 parse를 할필요가 없다.
+		            //var data = JSON.parse(responseData);
+		            if(!data){
+		                alert("해당도서의 대여정보가 없습니다.");
+		                return false;
+		            }
+		            $("#bookName").val(data.bookName);
+		            $("#memberName").val(data.memberName);
+		            $("#totalPrice").val(data.totalPrice);
+		            $("#rentalPayment").val(data.rentalPayment);
+		            $("#willPay").val(data.willPay);
+		            $("#rentalCode").val(data.rentalCode);
+		            $("#bookTotalDay").val(data.bookTotalDay);
+		        }
+		    });
+		});
+	
+	});
+	
+	
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -75,30 +110,30 @@
 		      <table align="center">
 		      		<tr>
 		      			<td>도서코드</td>
-		      			<td><input type="text"/></td>
-		      			<td><input type="button" value="조회"/></td>
+		      			<td><input type="text" id="bookCode" name="bookCode"/></td>
+		      			<td><input type="button" id="btn" value="조회" /></td>
 		      		</tr>
 		      		<tr>
 		      			<td>도서명</td>
-		      			<td><input type="text"/></td>
+		      			<td><input type="text" name="bookName" id="bookName"/></td>
 		      		</tr>
 		      		<tr>
 		      			<td>회원이름</td>
-		      			<td><input type="text"/></td>
+		      			<td><input type="text" name="memberId" id="memberId"/></td>
 		      		</tr>
 		      		<tr>
 		      			<td>총요금</td>
-		      			<td><input type="text"/></td>
+		      			<td><input type="text" name="totalPayment" id="totalPayment"/></td>
 		      		</tr>
 		      		<tr>
 		      			<td>받은금액</td>
 		      			<td>
-		      				<input type="text"/>
+		      				<input type="text" id="prePayment"/>
 		      			</td>
 		      		</tr><tr>
 		      			<td>받을금액</td>
 		      			<td>
-		      				<input type="text"/>
+		      				<input type="text" id="receivables"/>
 		      			</td>
 		      		</tr>
 		      		<tr>

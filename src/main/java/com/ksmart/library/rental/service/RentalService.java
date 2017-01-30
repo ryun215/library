@@ -15,10 +15,15 @@ public class RentalService {
 	private static final Logger logger = LoggerFactory.getLogger(RentalService.class);
 	@Autowired
 	private RentalDao rentalDao;
-	
+	//반납부분
+	//도서코드 입력받으면 도서코드로 대여정보 조회
+	//조회된 대여정보에서 memberId를 가지고 해당멤버의 level에 해당하는 payment가지고옴
+	// 
 	
 	//도서코드로 대여정보 조회
-	public RentalDao rentalInfoSelect(){
+	public RentalDao rentalInfoSelect(RentalDto rental){
+		RentalDto rent = rentalDao.rentalInfoSelect(rental);
+		System.out.println(rent.toString());
 		return null;
 	}
 	

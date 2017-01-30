@@ -31,7 +31,7 @@ public class RentalController {
 		logger.debug("rental확인 "+rental.toString());
 		rentalService.bookStateSelectAndRental(rental);
 		
-		return "";
+		return "redirect:/rental/rental";
 		
 	}
 	//도서반납 폼으로 감
@@ -43,8 +43,13 @@ public class RentalController {
 	//도서반납폼에서 도서코드 입력받음
 	@RequestMapping(value="/rental/return", method=RequestMethod.POST)
 	public String bookReturn(RentalDto rental){
+		rentalService.rentalInfoSelect(rental);
 		return "";
-		
+	}
+	
+	@RequestMapping(value="/rental/rentalInfo", method=RequestMethod.POST)
+	public String rentalInfoSelect(){
+		return "";
 	}
 	
 }
