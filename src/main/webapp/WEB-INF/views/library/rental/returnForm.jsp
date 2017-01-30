@@ -44,35 +44,8 @@
     }
   </style>
 	<script type="text/javascript">
-	$( document ).ready(function() {
-		function getContextPath() {
-			var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-			return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-		};
-	
-	$('btn').click(function(){
-		 $.ajax({
-		        url : getContextPath()+"/getRental",
-		        type: "get",
-		        data : { "bookCode" : $("#bookCode").val() },
-		        success : function(data){
-					//@ResponseBody 를 이용해서 이미 json객체로 넘어오기때문에 parse를 할필요가 없다.
-		            //var data = JSON.parse(responseData);
-		            if(!data){
-		                alert("해당도서의 대여정보가 없습니다.");
-		                return false;
-		            }
-		            $("#bookName").val(data.bookName);
-		            $("#memberName").val(data.memberName);
-		            $("#totalPrice").val(data.totalPrice);
-		            $("#rentalPayment").val(data.rentalPayment);
-		            $("#willPay").val(data.willPay);
-		            $("#rentalCode").val(data.rentalCode);
-		            $("#bookTotalDay").val(data.bookTotalDay);
-		        }
-		    });
-		});
-	
+	$('#btn').click(function(){
+		
 	});
 	
 	
