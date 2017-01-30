@@ -29,9 +29,13 @@ public class BookService {
 	//도서 폐기를 위해 도서코드로 도서정보 select하여 disposal에 값 옮겨 insert
 	public int bookSelectAndDisposal(DisposalDto bookCode){
 		System.out.println("폐기도서코드 확인 Service :"+bookCode.getBookCode());
+		//폐기될 도서정보 셀렉트
 		BookDto bookInfo = bookDao.bookSelect(bookCode);
-		logger.debug("bookInfo :"+bookInfo);
-		return bookDao.disposalInsert(bookInfo);
+		//폐기테이블에 insert
+		bookDao.disposalInsert(bookInfo);
+		//도서테이블 상태 업데이트
+		bookDao.stateUpdate(bookCode);
+		return 0;
 	}
 		
 

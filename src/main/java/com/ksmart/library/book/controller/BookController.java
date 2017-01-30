@@ -49,6 +49,7 @@ public class BookController {
 	public String disposal(DisposalDto bookCode){
 		System.out.println("폐기도서코드 확인 :"+bookCode);
 		bookService.bookSelectAndDisposal(bookCode);
+		
 		return "redirect:/book/disposal";
 	}
 }

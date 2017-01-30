@@ -56,7 +56,7 @@
 	      <ul class="nav navbar-nav">
 	  	    <li><a href="/book/bookInsert">도서관리</a></li>
 	        <li><a href="/book/bookMember">회원관리</a></li>
-	        <li><a href="/book/rental">대여관리</a></li>
+	        <li><a href="/rental/rental">대여관리</a></li>
 	      </ul>
 	    </div>
 	  </div>

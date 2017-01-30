@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title></title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,8 +15,10 @@
       margin-bottom: 0;
       border-radius: 0;
     }
+    
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
+    
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
@@ -51,11 +52,11 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="/main">4조 도서관</a>
+	      <a class="navbar-brand" href="#">4조 도서관</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	     	<li><a href="/book/bookInsert">도서관리</a></li>
+	      	<li><a href="/book/bookInsert">도서관리</a></li>
 	        <li><a href="/member/memberInsert">회원관리</a></li>
 	        <li><a href="/rental/rental">대여관리</a></li>
 	      </ul>
@@ -65,44 +66,46 @@
 	<div class="container-fluid text-center">    
 	  <div class="row content">
 	    <div class="col-sm-2 sidenav">
-	      <p><a href="/book/bookInsert">도서등록</a></p>
-	      <p><a href="/book/disposal">도서폐기등록</a></p>
+	      <p><a href="/rental/rental">대여</a></p>
+	      <p><a href="/rental/return">반납</a></p>
 	    </div>
 	    <div class="col-sm-8 text-center"> 
-	      <h1>도서등록</h1>
-	      <form action="/book/bookInsert" method="post">
+	      <h1>도서 반납</h1>
+	      <form action="/rental/return" method="post">
 		      <table align="center">
 		      		<tr>
-		      			<td><input type="hidden" name="libraryId" value="${libraryId}"></td>
+		      			<td>도서코드</td>
+		      			<td><input type="text"/></td>
+		      			<td><input type="button" value="조회"/></td>
 		      		</tr>
 		      		<tr>
 		      			<td>도서명</td>
-		      			<td><input type="text" name="bookName"/></td>
+		      			<td><input type="text"/></td>
 		      		</tr>
 		      		<tr>
-		      			<td>저자</td>
-		      			<td><input type="text" name="bookAuthor"/></td>
+		      			<td>회원이름</td>
+		      			<td><input type="text"/></td>
 		      		</tr>
 		      		<tr>
-		      			<td>출판사</td>
-		      			<td><input type="text" name="bookPublisher"/></td>
+		      			<td>총요금</td>
+		      			<td><input type="text"/></td>
 		      		</tr>
 		      		<tr>
-		      			<td>장르</td>
+		      			<td>받은금액</td>
 		      			<td>
-		      				<select name="genreCode">
-		      					<option>선택</option>
-		      					<c:forEach var="genre" items="${genre}">
-		      						<option value="${genre.genreCode}">${genre.genreName}</option>
-		      					</c:forEach> 
-		      				</select>
+		      				<input type="text"/>
+		      			</td>
+		      		</tr><tr>
+		      			<td>받을금액</td>
+		      			<td>
+		      				<input type="text"/>
+		      			</td>
 		      		</tr>
 		      		<tr>
 		      			<td>
 		      			</td>
 		      			<td>
-		      				<input type="submit" value="도서등록"/>
-		      				<input type="reset" value="초기화"/>
+		      				<input type="submit" value="반납"/>
 		      			</td>
 		      		</tr>
 		      	</table>
@@ -110,6 +113,5 @@
 	    </div>
 	  </div>
 	</div>
-	
 </body>
 </html>

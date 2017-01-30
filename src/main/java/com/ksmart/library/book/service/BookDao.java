@@ -34,4 +34,8 @@ public class BookDao {
 	public int disposalInsert(BookDto book){
 		return sqlSessionTemplate.insert(BookNameSpace+"disposalInsert", book);
 	}
+	//도서폐기시 도서테이블의 상태 변경
+	public int stateUpdate(DisposalDto book){
+		return sqlSessionTemplate.update(BookNameSpace+"stateUpdate", book);
+	}
 }
