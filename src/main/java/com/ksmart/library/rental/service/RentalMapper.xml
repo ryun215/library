@@ -4,19 +4,20 @@
   <mapper namespace="com.ksmart.library.rental.service.RentalMapper">
   
   <!-- 도서코드와 일치하는 대여테이블 조회 -->
-  <select id="rentalInfoSelect" parameterType="com.ksmart.library.dto.RentalDto"
-   resultType="com.ksmart.library.dto.RentalDto">
-	   select
-	   		rental_code as rentalCode,
-	   		book_code as bookCode,
-	   		member_id as memberId,
-	   		rentalstate_code as rentalStateCode,
-	   		rental_start as rentalStart,
-	   		rental_end as rentalEnd,
-	   		rental_payment as rentalPayment,
-	   		rental_prepayment as rentalPrePayment
-	   	from rental
-	   	where book_code = #{bookCode}
+  <select id="rentalInfoSelect" parameterType="String"
+   resultType="com.ksmart.library.dto.ReturnDto">
+	   select 
+	   		rental.rental_code as rentalCode, 
+	   		book.book_name as bookName, 
+	   		member.member_name as memberName, 
+	   		memberlevel.payment as memberlevelPayment, 
+	   		rental.rental_prepayment as rentalPrePayment,
+	   		rental.rental_start as rentalStart  
+		from rental 
+			join book on rental.book_code = book.book_code 
+			join member on rental.member_id = member.member_id 
+			join memberlevel on member.memberlevel_code = memberlevel.memberlevel_code 
+		where rental.book_code = #{bookCode}
   </select>
  
  

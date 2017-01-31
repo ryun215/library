@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ksmart.library.dto.RentalDto;
+import com.ksmart.library.dto.ReturnDto;
 
 @Repository
 public class RentalDao {
@@ -38,7 +39,7 @@ public class RentalDao {
 		return sqlSessionTemplate.selectOne(rentalNameSpace+"idCheck", rental);
 	}
 	//도서코드를 가지고 렌탈정보 조회
-	public RentalDto rentalInfoSelect(RentalDto rental){
-		return sqlSessionTemplate.selectOne(rentalNameSpace+"rentalInfoSelect", rental);
+	public ReturnDto rentalInfoSelect(String bookCode){
+		return sqlSessionTemplate.selectOne(rentalNameSpace+"rentalInfoSelect", bookCode);
 	}
 }

@@ -44,10 +44,32 @@
     }
   </style>
 	<script type="text/javascript">
-	$('#btn').click(function(){
+	$( document ).ready(function() {
+		function getContextPath() {
+			var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+			return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+		};
+
+		$('#btn').click(function(){
+			
+			  $.ajax({
+				url : getContextPath()+"/getRentalInfo",
+		        type: "get",
+		        data : { "bookCode" : $("#bookCode").val()},
+		        success : function(data){
+		        	$("#bookName").val(data.bookName);
+		        	$("#memberName").val(data.memberName);
+		        	$("#rentalPrePayment").val(data.rentalPrePayment);
+		        	$("#totalPayment").val(data.totalPayment);
+		        	$("#willRiceivePay").val(data.willRiceivePay);
+		        }
+
+
+
+			});
 		
+		});
 	});
-	
 	
 	</script>
 </head>
@@ -92,7 +114,7 @@
 		      		</tr>
 		      		<tr>
 		      			<td>회원이름</td>
-		      			<td><input type="text" name="memberId" id="memberId"/></td>
+		      			<td><input type="text" name="memberName" id="memberName"/></td>
 		      		</tr>
 		      		<tr>
 		      			<td>총요금</td>
@@ -101,12 +123,12 @@
 		      		<tr>
 		      			<td>받은금액</td>
 		      			<td>
-		      				<input type="text" id="prePayment"/>
+		      				<input type="text" id="rentalPrePayment"/>
 		      			</td>
 		      		</tr><tr>
 		      			<td>받을금액</td>
 		      			<td>
-		      				<input type="text" id="receivables"/>
+		      				<input type="text" id="willRiceivePay"/>
 		      			</td>
 		      		</tr>
 		      		<tr>

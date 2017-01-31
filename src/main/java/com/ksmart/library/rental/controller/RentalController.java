@@ -1,14 +1,20 @@
 package com.ksmart.library.rental.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ksmart.library.HomeController;
 import com.ksmart.library.dto.RentalDto;
+import com.ksmart.library.dto.ReturnDto;
 import com.ksmart.library.rental.service.RentalService;
 
 @Controller
@@ -40,16 +46,14 @@ public class RentalController {
 		return "/library/rental/returnForm";
 	}
 	
-	//도서반납폼에서 도서코드 입력받음
-	@RequestMapping(value="/rental/return", method=RequestMethod.POST)
-	public String bookReturn(RentalDto rental){
-		rentalService.rentalInfoSelect(rental);
-		return "";
-	}
-	
-	@RequestMapping(value="/rental/rentalInfo", method=RequestMethod.POST)
-	public String rentalInfoSelect(){
-		return "";
+	//도서반납폼에서 도서코드 입력받음	
+	@RequestMapping(value="/rental/getRentalInfo", method=RequestMethod.GET)
+	public @ResponseBody ReturnDto getRentalInfo(@RequestParam("bookCode") String bookCode, HttpServletResponse response){
+		logger.debug("북코드 확인 : "+bookCode);
+		ReturnDto rentalInfo = rentalService.rentalInfoSelect(bookCode);
+		System.out.println("rentalInfo : "+rentalInfo.toString());
+		return rentalInfo;
+		
 	}
 	
 }

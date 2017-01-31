@@ -1,7 +1,8 @@
 package com.ksmart.library.rental.service;
 
-import java.awt.print.Printable;
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ksmart.library.dto.RentalDto;
+import com.ksmart.library.dto.ReturnDto;
 
 @Service
 public class RentalService {
@@ -20,11 +22,63 @@ public class RentalService {
 	//조회된 대여정보에서 memberId를 가지고 해당멤버의 level에 해당하는 payment가지고옴
 	// 
 	
+	
+	
+	
 	//도서코드로 대여정보 조회
-	public RentalDao rentalInfoSelect(RentalDto rental){
-		RentalDto rent = rentalDao.rentalInfoSelect(rental);
+	public ReturnDto rentalInfoSelect(String bookCode){
+		ReturnDto rent = rentalDao.rentalInfoSelect(bookCode);
+		//ReturnDto 타입으로 값 받아옴
 		System.out.println(rent.toString());
-		return null;
+		
+		//대여일 String으로 가져와 Date타입으로 변환하여 현재날짜-대여일 계산
+		String rentalStart = rent.getRentalStart();
+		System.out.println("대여시작일 가져옴 : "+rentalStart.toString());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date startDay = null;
+		try {
+			startDay = format.parse(rentalStart);
+			System.out.println("startDay :"+startDay);
+		} catch (ParseException e) {
+		
+			e.printStackTrace();
+		}
+		Date currentDay = new Date();
+		System.out.println("currentDay :"+currentDay);
+		
+		long diff = currentDay.getTime() - startDay.getTime();
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		System.out.println("diffDays :"+diffDays);
+		int rentDay = (int)diffDays;
+		System.out.println("rentDay 확인 :"+rentDay);
+		
+		//멤버레벨에 따른 가격 가져옴
+		int price = rent.getMemberlevelPayment();
+		
+		int totalPay = price*rentDay;
+		System.out.println("대여 총금액 :"+totalPay);
+		rent.setTotalPayment(totalPay);
+		//선지급금 가져옴
+		int prePayment = rent.getRentalPrePayment();
+		//받을금액
+		int willPay = totalPay-prePayment;
+		rent.setWillRiceivePay(willPay);
+		
+		/*public static long diffOfDate(String begin, String end) throws Exception
+		  {
+		    SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		 
+		    Date beginDate = formatter.parse(begin);
+		    Date endDate = formatter.parse(end);
+		 
+		    long diff = endDate.getTime() - beginDate.getTime();
+		    long diffDays = diff / (24 * 60 * 60 * 1000);
+		 
+		    return diffDays;*/
+		
+		
+		
+		return rent;
 	}
 	
 	
