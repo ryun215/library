@@ -2,6 +2,7 @@ package com.ksmart.library.dto;
 
 public class ReturnDto {
 	private int rentalCode;
+	private String bookCode;
 	private String bookName;
 	private String memberName;
 	private int memberlevelPayment;
@@ -9,6 +10,7 @@ public class ReturnDto {
 	private int totalPayment;
 	private int willRiceivePay;
 	private String rentalStart;
+	private int rentDay;
 	public int getRentalCode() {
 		return rentalCode;
 	}
@@ -58,12 +60,26 @@ public class ReturnDto {
 	public void setWillRiceivePay(int willRiceivePay) {
 		this.willRiceivePay = willRiceivePay;
 	}
+	public int getRentDay() {
+		return rentDay;
+	}
+	public void setRentDay(int rentDay) {
+		this.rentDay = rentDay;
+	}
+	
+	public String getBookCode() {
+		return bookCode;
+	}
+	public void setBookCode(String bookCode) {
+		this.bookCode = bookCode;
+	}
 	@Override
 	public String toString() {
-		return "ReturnDto [rentalCode=" + rentalCode + ", bookName=" + bookName + ", memberName=" + memberName
-				+ ", memberlevelPayment=" + memberlevelPayment + ", rentalPrePayment=" + rentalPrePayment
-				+ ", totalPayment=" + totalPayment + ", willRiceivePay=" + willRiceivePay + ", rentalStart="
-				+ rentalStart + "]";
+		return "ReturnDto [rentalCode=" + rentalCode + ", bookCode=" + bookCode + ", bookName=" + bookName
+				+ ", memberName=" + memberName + ", memberlevelPayment=" + memberlevelPayment + ", rentalPrePayment="
+				+ rentalPrePayment + ", totalPayment=" + totalPayment + ", willRiceivePay=" + willRiceivePay
+				+ ", rentalStart=" + rentalStart + ", rentDay=" + rentDay + "]";
 	}
+	
 	
 }

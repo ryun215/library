@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ksmart.library.dto.BookDto;
 import com.ksmart.library.dto.RentalDto;
 import com.ksmart.library.dto.ReturnDto;
 
@@ -22,7 +23,45 @@ public class RentalService {
 	//조회된 대여정보에서 memberId를 가지고 해당멤버의 level에 해당하는 payment가지고옴
 	// 
 	
-	
+	//반납 ReturnDto타입 객체로 값 넘겨받음
+	public int bookReturn(ReturnDto bookReturn){
+		//해야할일
+		
+		
+		
+		//대여테이블의 대여상태코드 1->2로 업데이트, 대여테이블의 반납일 입력해줌
+		//대여테이블의 payment(총요금)에 totalPayment값 넣어주기
+		rentalDao.rentalUpdate(bookReturn);
+		//book테이블의 상태코드 1번 대여가능으로 업데이트, totalDay에 대여일 기존+업데이트,
+		//totalCount에 +1해줌
+		//book테이블의 firstDay,totalDay, totalCount 조회
+		BookDto book =rentalDao.bookTotalSelect(bookReturn);
+		int bookTotalCount = book.getBookTotalcount();
+		int bookTotalDay = book.getBookTotalday();
+		System.out.println("totalDay : "+bookTotalDay+" totalCount : "+bookTotalCount);
+		bookTotalCount += 1;
+		int rentDay = bookReturn.getRentDay();
+		System.out.println("대여일확인 : "+rentDay);
+		bookTotalDay += rentDay;
+		String bookCode = bookReturn.getBookCode();
+		System.out.println("북코드 확인 : "+bookCode);
+		
+		String first = book.getBookFirstday();
+		if(first==null){
+			rentalDao.bookFirstDayUpdate(bookReturn);
+		}
+		
+		//bookDto타입 객체에 코드,토탈값 담음( 업데이트하기위함)
+		BookDto bookUpdate = new BookDto();
+		bookUpdate.setBookCode(bookCode);
+		bookUpdate.setBookTotalcount(bookTotalCount);
+		bookUpdate.setBookTotalday(bookTotalDay);
+		
+		rentalDao.bookTotalUpdate(bookUpdate);
+		
+		
+		return 0;
+	}
 	
 	
 	//도서코드로 대여정보 조회
@@ -51,7 +90,7 @@ public class RentalService {
 		System.out.println("diffDays :"+diffDays);
 		int rentDay = (int)diffDays;
 		System.out.println("rentDay 확인 :"+rentDay);
-		
+		rent.setRentDay(rentDay);
 		//멤버레벨에 따른 가격 가져옴
 		int price = rent.getMemberlevelPayment();
 		
@@ -63,22 +102,8 @@ public class RentalService {
 		//받을금액
 		int willPay = totalPay-prePayment;
 		rent.setWillRiceivePay(willPay);
-		
-		/*public static long diffOfDate(String begin, String end) throws Exception
-		  {
-		    SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-		 
-		    Date beginDate = formatter.parse(begin);
-		    Date endDate = formatter.parse(end);
-		 
-		    long diff = endDate.getTime() - beginDate.getTime();
-		    long diffDays = diff / (24 * 60 * 60 * 1000);
-		 
-		    return diffDays;*/
-		
-		
-		
 		return rent;
+		
 	}
 	
 	

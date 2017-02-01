@@ -58,4 +58,42 @@
 	 	from member 
 	 	where member_id= #{memberId}
  	</select>
+ 	
+ 	<!-- 대여 업데이트 -->
+ 	<update id="rentalUpdate" parameterType="com.ksmart.library.dto.ReturnDto">
+ 		update rental 
+ 		set 
+ 			rentalstate_code = 2 ,
+ 			rental_payment = #{totalPayment},
+ 			rental_end=now(),
+ 			rental_prepayment=0 
+ 		where rental_code=#{rentalCode}
+ 	</update>
+ 	
+ 	<!-- 도서의 현재 Firstday, totalDay,totalCount 셀렉트 -->
+ 	<select id="bookTotalSelect" parameterType="com.ksmart.library.dto.ReturnDto" resultType="com.ksmart.library.dto.BookDto" >
+ 	select
+ 		book_firstDay as bookFirstday, 
+ 		book_totalday as bookTotalday,
+ 		book_totalcount as bookTotalcount  
+ 	from book 
+ 	where book_code=#{bookCode}
+ 	</select>
+ 	
+ 	<!-- 도서의 첫번째 대여일 업데이트 -->
+ 	<update id="firstDayUpdate" parameterType="com.ksmart.library.dto.ReturnDto">
+ 	update book 
+ 	set 
+ 		book_firstday = now() 
+ 	where book_code = #{bookCode}
+ 	</update>
+ 	
+ 	<!-- 도서 토탈값 업데이트  -->
+ 	<update id="bookTotalUpdate" parameterType="com.ksmart.library.dto.BookDto">
+ 	update book 
+ 	set 
+ 		book_totalday = #{bookTotalday},
+ 		book_totalcount = #{bookTotalcount} 
+ 	where book_code = #{bookCode}
+ 	</update>
  </mapper>

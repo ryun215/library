@@ -62,6 +62,8 @@
 		        	$("#rentalPrePayment").val(data.rentalPrePayment);
 		        	$("#totalPayment").val(data.totalPayment);
 		        	$("#willRiceivePay").val(data.willRiceivePay);
+		        	$("#rentalCode").val(data.rentalCode);
+		        	$("#rentDay").val(data.rentDay);
 		        }
 
 
@@ -103,6 +105,8 @@
 	      <h1>도서 반납</h1>
 	      <form action="/rental/return" method="post">
 		      <table align="center">
+		      		<input type="hidden" name="rentalCode" id="rentalCode" value=""/>
+		      		<input type="hidden" name="rentDay" id="rentDay" value=""/>
 		      		<tr>
 		      			<td>도서코드</td>
 		      			<td><input type="text" id="bookCode" name="bookCode"/></td>
@@ -138,6 +142,7 @@
 		      				<input type="submit" value="반납"/>
 		      			</td>
 		      		</tr>
+		      	
 		      	</table>
 	      	</form>
 	    </div>

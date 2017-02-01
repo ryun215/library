@@ -45,6 +45,12 @@ public class RentalController {
 	public String bookReturn(){
 		return "/library/rental/returnForm";
 	}
+	//도서반납폼에서 반납버튼 클릭
+	@RequestMapping(value="/rental/return", method=RequestMethod.POST)
+	public String bookReturn(ReturnDto bookReturn){
+		rentalService.bookReturn(bookReturn);
+		return "redirect:/rental/return";
+	}
 	
 	//도서반납폼에서 도서코드 입력받음	
 	@RequestMapping(value="/rental/getRentalInfo", method=RequestMethod.GET)

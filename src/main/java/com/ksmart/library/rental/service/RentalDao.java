@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ksmart.library.dto.BookDto;
 import com.ksmart.library.dto.RentalDto;
 import com.ksmart.library.dto.ReturnDto;
 
@@ -41,5 +42,24 @@ public class RentalDao {
 	//도서코드를 가지고 렌탈정보 조회
 	public ReturnDto rentalInfoSelect(String bookCode){
 		return sqlSessionTemplate.selectOne(rentalNameSpace+"rentalInfoSelect", bookCode);
+	}
+	//렌탈정보 업데이트
+	public int rentalUpdate(ReturnDto bookReturn){
+		return sqlSessionTemplate.update(rentalNameSpace+"rentalUpdate", bookReturn);
+	}
+	
+	//도서 total값,firstday 조회
+	public BookDto bookTotalSelect(ReturnDto rt){
+		return sqlSessionTemplate.selectOne(rentalNameSpace+"bookTotalSelect", rt);
+	}
+	
+	//도서 firstday 업데이트
+	public int bookFirstDayUpdate(ReturnDto rt){
+		return sqlSessionTemplate.update(rentalNameSpace+"firstDayUpdate", rt);
+	}
+	
+	//도서 total 업데이트
+	public int bookTotalUpdate(BookDto book){
+		return sqlSessionTemplate.update(rentalNameSpace+"bookTotalUpdate", book);
 	}
 }
