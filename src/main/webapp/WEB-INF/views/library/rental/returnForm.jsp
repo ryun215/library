@@ -49,7 +49,6 @@
 			var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 			return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
 		};
-
 		$('#btn').click(function(){
 			
 			  $.ajax({
@@ -65,9 +64,6 @@
 		        	$("#rentalCode").val(data.rentalCode);
 		        	$("#rentDay").val(data.rentDay);
 		        }
-
-
-
 			});
 		
 		});
@@ -84,7 +80,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="#">4조 도서관</a>
+	      <a class="navbar-brand" href="/main">4조 도서관</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">

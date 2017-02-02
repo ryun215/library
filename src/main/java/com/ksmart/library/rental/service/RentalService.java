@@ -26,9 +26,6 @@ public class RentalService {
 	//반납 ReturnDto타입 객체로 값 넘겨받음
 	public int bookReturn(ReturnDto bookReturn){
 		//해야할일
-		
-		
-		
 		//대여테이블의 대여상태코드 1->2로 업데이트, 대여테이블의 반납일 입력해줌
 		//대여테이블의 payment(총요금)에 totalPayment값 넣어주기
 		rentalDao.rentalUpdate(bookReturn);
@@ -103,7 +100,6 @@ public class RentalService {
 		int willPay = totalPay-prePayment;
 		rent.setWillRiceivePay(willPay);
 		return rent;
-		
 	}
 	
 	

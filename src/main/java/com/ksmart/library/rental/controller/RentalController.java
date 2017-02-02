@@ -1,6 +1,5 @@
 package com.ksmart.library.rental.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ksmart.library.HomeController;
 import com.ksmart.library.dto.RentalDto;
 import com.ksmart.library.dto.ReturnDto;
 import com.ksmart.library.rental.service.RentalService;
@@ -27,6 +25,7 @@ public class RentalController {
 	//도서대여폼으로 감
 	@RequestMapping(value="/rental/rental", method=RequestMethod.GET)
 	public String rental(){
+		
 		return "/library/rental/rentalForm";
 	}
 	
