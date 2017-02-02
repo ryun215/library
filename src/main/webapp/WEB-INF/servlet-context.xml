@@ -59,6 +59,7 @@
            <mvc:mapping path="/*"/>
            <!-- 해당 path는 인터셉트 하지않는다 -->
            <mvc:exclude-mapping path="/login"/>
+           <mvc:exclude-mapping path="/library/libraryadd"/>
            <!-- 로그인체크 인터셉터 클래스 -->
            <bean class="com.ksmart.library.intercepter.Intercepter"/>
         </mvc:interceptor>
