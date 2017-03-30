@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,13 +51,13 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="/main">4조 도서관</a>
+	      <a class="navbar-brand" href="<c:url value='/main'/>">4조 도서관</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	  	    <li><a href="/book/bookInsert">도서관리</a></li>
-	        <li><a href="/book/bookMember">회원관리</a></li>
-	        <li><a href="/rental/rental">대여관리</a></li>
+	    	 <li><a href="<c:url value='/book/bookInsert'/>">도서관리</a></li>
+	        <li><a href="<c:url value='/member/memberInsert'/>">회원관리</a></li>
+	        <li><a href="<c:url value='/rental/rental'/>">대여관리</a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -64,8 +65,9 @@
 	<div class="container-fluid text-center">    
 	  <div class="row content">
 	    <div class="col-sm-2 sidenav">
-	      <p><a href="/book/bookInsert">도서등록</a></p>
-	      <p><a href="/book/disposal">도서폐기등록</a></p>
+	    
+	      <p><a href="<c:url value='/book/bookInsert'/>">도서등록</a></p>
+	      <p><a href="<c:url value='/book/disposal'/>">도서폐기등록</a></p>
 	    </div>
 	  
 	    </div>

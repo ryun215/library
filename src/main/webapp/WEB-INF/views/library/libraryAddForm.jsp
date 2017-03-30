@@ -62,7 +62,7 @@
  
       <h1>도서관 가입</h1>
       
-      	<form action="/library/libraryadd" method="post">
+      	<form action="<c:url value='/libraryadd'/>" method="post">
       	<table align="center">
       		<tr>
       			<td>관리자ID</td>

@@ -46,7 +46,7 @@ public class LibraryController {
 	}
 	
 	//library add폼으로 가는 요청
-	@RequestMapping(value="/library/libraryadd" , method=RequestMethod.GET)
+	@RequestMapping(value="/libraryadd" , method=RequestMethod.GET)
 	public String add(Model model){
 		logger.debug("add요청 get방식");
 		List<LocalDto> local = libraryService.localNameSelect();
@@ -56,7 +56,7 @@ public class LibraryController {
 	}
 	
 	//library add폼에서 입력받아 도서관 관리자 가입처리
-	@RequestMapping(value="/library/libraryadd", method=RequestMethod.POST)
+	@RequestMapping(value="/libraryadd", method=RequestMethod.POST)
 	public String add(LibraryDto library){
 		logger.debug("컨트롤러에서 library값 받았는지 확인 :"+library.toString());
 		libraryService.libraryInsert(library);

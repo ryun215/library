@@ -53,13 +53,14 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="/main">4조 도서관</a>
+	      
+	      <a class="navbar-brand" href="<c:url value='/main'/>">4조 도서관</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	    	 <li><a href="/book/bookInsert">도서관리</a></li>
-	        <li><a href="/member/memberInsert">회원관리</a></li>
-	        <li><a href="/rental/rental">대여관리</a></li>
+	    	 <li><a href="<c:url value='/book/bookInsert'/>">도서관리</a></li>
+	        <li><a href="<c:url value='/member/memberInsert'/>">회원관리</a></li>
+	        <li><a href="<c:url value='/rental/rental'/>">대여관리</a></li>
 	      </ul>
 	    </div>
 	  </div>

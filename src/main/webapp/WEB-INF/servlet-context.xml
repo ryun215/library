@@ -28,9 +28,9 @@
     <context:component-scan base-package="com.ksmart.library" />
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/library?useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="java0000"/>
+        <property name="url" value="jdbc:mysql://ryun215.cafe24.com:3306/ryun215?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="ryun215"/>
+        <property name="password" value="java5963@"/>
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -52,18 +52,18 @@
         <constructor-arg index="0" ref="sqlSessionFactory" />
     </bean>
     
-    <mvc:interceptors>
+  <!--   <mvc:interceptors>
         <mvc:interceptor>
-        <!-- mapping 된 클래스를 모두 가로챈다 -->
+        mapping 된 클래스를 모두 가로챈다
            <mvc:mapping path="/*/*"/>
            <mvc:mapping path="/*"/>
-           <!-- 해당 path는 인터셉트 하지않는다 -->
+           해당 path는 인터셉트 하지않는다
            <mvc:exclude-mapping path="/login"/>
            <mvc:exclude-mapping path="/library/libraryadd"/>
-           <!-- 로그인체크 인터셉터 클래스 -->
+           로그인체크 인터셉터 클래스
            <bean class="com.ksmart.library.intercepter.Intercepter"/>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors> -->
 
     
     

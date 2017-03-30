@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,9 +62,9 @@
 	</nav>
 	  
 	<div class="container-fluid text-center">    
- 
+ 	
       <h1>도서관 관리 시스템</h1>
-      	<form id="login" action="/login" method="post">
+      	<form id="login" action="<c:url value='/login'/>" method="post">
       	<table align="center">
       		<tr>
       			<td>ID</td>
@@ -77,7 +78,7 @@
       			<td></td>
       			<td>
       			<input type="submit" id="submit" value="로그인"/>
-      			<input type="button" value="도서관가입" onclick="location.href='/library/libraryadd'"/>
+      			<input type="button" value="도서관가입" onclick="location.href='/libraryadd'"/>
       			</td>
       		</tr>
       		</table>
